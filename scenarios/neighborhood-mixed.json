@@ -1,0 +1,95 @@
+{
+  "network": {
+    "segments": [
+      {
+        "id": 1,
+        "points": [
+          {"x": 150, "y": 150},
+          {"x": 250, "y": 150},
+          {"x": 350, "y": 150},
+          {"x": 450, "y": 150}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 2,
+        "points": [
+          {"x": 450, "y": 150},
+          {"x": 550, "y": 150},
+          {"x": 650, "y": 150}
+        ],
+        "twoWay": false,
+        "speedLimit": 40
+      },
+      {
+        "id": 3,
+        "points": [
+          {"x": 250, "y": 150},
+          {"x": 250, "y": 200},
+          {"x": 250, "y": 250},
+          {"x": 250, "y": 300}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 4,
+        "points": [
+          {"x": 350, "y": 150},
+          {"x": 350, "y": 200},
+          {"x": 350, "y": 250}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 5,
+        "points": [
+          {"x": 250, "y": 300},
+          {"x": 300, "y": 300},
+          {"x": 350, "y": 300}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 6,
+        "points": [
+          {"x": 350, "y": 250},
+          {"x": 350, "y": 300}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 7,
+        "points": [
+          {"x": 150, "y": 150},
+          {"x": 150, "y": 200},
+          {"x": 150, "y": 250}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 8,
+        "points": [
+          {"x": 150, "y": 250},
+          {"x": 200, "y": 250},
+          {"x": 250, "y": 250}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      }
+    ],
+    "version": "1.0"
+  },
+  "settings": {
+    "desiredHeadway": 1.5,
+    "globalSpeedLimit": 50,
+    "snapRadius": 10
+  },
+  "version": "1.0",
+  "timestamp": "2024-01-01T00:00:00.000Z"
+}
