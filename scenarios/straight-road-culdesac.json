@@ -1,0 +1,51 @@
+{
+  "network": {
+    "segments": [
+      {
+        "id": 1,
+        "points": [
+          {"x": 100, "y": 300},
+          {"x": 200, "y": 300},
+          {"x": 300, "y": 300},
+          {"x": 400, "y": 300}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 2,
+        "points": [
+          {"x": 400, "y": 300},
+          {"x": 450, "y": 250},
+          {"x": 450, "y": 200},
+          {"x": 400, "y": 150},
+          {"x": 350, "y": 150},
+          {"x": 300, "y": 150},
+          {"x": 250, "y": 150},
+          {"x": 200, "y": 150}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      },
+      {
+        "id": 3,
+        "points": [
+          {"x": 200, "y": 150},
+          {"x": 200, "y": 200},
+          {"x": 200, "y": 250},
+          {"x": 200, "y": 300}
+        ],
+        "twoWay": true,
+        "speedLimit": null
+      }
+    ],
+    "version": "1.0"
+  },
+  "settings": {
+    "desiredHeadway": 1.5,
+    "globalSpeedLimit": 50,
+    "snapRadius": 10
+  },
+  "version": "1.0",
+  "timestamp": "2024-01-01T00:00:00.000Z"
+}

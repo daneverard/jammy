@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Toolbar -->
+        <div class="toolbar">
+            <div class="tool-group">
+                <button id="tool-select" class="tool-btn active" title="Select (S)">Select</button>
+                <button id="tool-draw" class="tool-btn" title="Draw Road (D)">Draw Road</button>
+                <button id="tool-edit" class="tool-btn" title="Edit Vertices (E)">Edit</button>
+                <button id="tool-delete" class="tool-btn" title="Delete (Del)">Delete</button>
+            </div>
+            <div class="tool-group">
+                <button id="btn-undo" class="tool-btn" title="Undo (Z)">Undo</button>
+                <button id="btn-redo" class="tool-btn" title="Redo (Y)">Redo</button>
+            </div>
+            <div class="tool-group">
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggle-grid"> Grid
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggle-direction"> Direction
+                </label>
+            </div>
+            <div class="tool-group">
+                <button id="btn-save" class="tool-btn">Save Scenario</button>
+                <button id="btn-load" class="tool-btn">Load Scenario</button>
+                <input type="file" id="file-input" accept=".json" style="display: none;">
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Canvas Container -->
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+                <div class="canvas-overlay">
+                    <div class="hud">
+                        <div>Sim Time: <span id="sim-time">0.0</span>s</div>
+                        <div>FPS: <span id="fps">60</span></div>
+                        <div>Cars: <span id="car-count">0</span></div>
+                        <div>Speed: <span id="mean-speed">0.0</span> km/h</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="sidebar">
+                <h2>Simulation</h2>
+                <div class="control-group">
+                    <button id="btn-start" class="btn-primary">Start</button>
+                    <button id="btn-pause" class="btn-secondary" style="display: none;">Pause</button>
+                    <button id="btn-reset" class="btn-secondary">Reset</button>
+                </div>
+                
+                <div class="control-group">
+                    <label>Simulation Speed:</label>
+                    <select id="speed-select">
+                        <option value="0.25">0.25?</option>
+                        <option value="1" selected>1?</option>
+                        <option value="2">2?</option>
+                        <option value="4">4?</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <h3>Car Management</h3>
+                    <div class="input-group">
+                        <label>Car Count:</label>
+                        <input type="number" id="car-count-input" value="50" min="1" max="500">
+                    </div>
+                    <button id="btn-place-cars" class="btn-primary">Place Cars</button>
+                    <button id="btn-add-car" class="btn-secondary">+ Add Car</button>
+                </div>
+
+                <div class="control-group">
+                    <h3>Metrics</h3>
+                    <div class="metrics">
+                        <div>Total Cars: <span id="metric-cars">0</span></div>
+                        <div>Mean Speed: <span id="metric-mean-speed">0.0</span> km/h</div>
+                        <div>Median Speed: <span id="metric-median-speed">0.0</span> km/h</div>
+                        <div>Avg Delay: <span id="metric-delay">0.0</span>%</div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>Settings</h3>
+                    <div class="settings">
+                        <div class="input-group">
+                            <label>Snap Radius:</label>
+                            <input type="number" id="snap-radius" value="10" min="5" max="30" step="1">
+                        </div>
+                        <div class="input-group">
+                            <label>Desired Headway:</label>
+                            <input type="number" id="desired-headway" value="1.5" min="0.8" max="2.5" step="0.1">s
+                        </div>
+                        <div class="input-group">
+                            <label>Global Speed Limit:</label>
+                            <input type="number" id="global-speed-limit" value="50" min="20" max="120" step="5"> km/h
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group" id="car-info-panel" style="display: none;">
+                    <h3>Car Info</h3>
+                    <div id="car-info-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="status-text">Ready - Draw a road network to begin</span>
+            <span class="hints">
+                <span>Space: Pan | +/-: Zoom | Z/Y: Undo/Redo</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorial-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Welcome to Traffic Simulator</h2>
+            <ol>
+                <li><strong>Draw Roads:</strong> Select "Draw Road" and click-drag on the canvas</li>
+                <li><strong>Edit:</strong> Select a road and move its vertices</li>
+                <li><strong>Place Cars:</strong> Click "Place Cars" to spawn vehicles</li>
+                <li><strong>Run:</strong> Click "Start" to begin simulation</li>
+                <li><strong>Watch:</strong> Cars will navigate junctions randomly and turn around at dead ends</li>
+            </ol>
+            <button id="btn-close-tutorial" class="btn-primary">Got it!</button>
+            <label class="toggle-label">
+                <input type="checkbox" id="dont-show-again"> Don't show again
+            </label>
+        </div>
+    </div>
+
+    <script src="traffic-simulator.js"></script>
+</body>
+</html>
